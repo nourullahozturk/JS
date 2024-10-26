@@ -40,18 +40,21 @@ console.log(typeof nurullahTugba);
 console.log(typeof null);
 
 // Değişken değeri değiştirme
+// daha önceden tanımlamış olduğumuz değişkene basitçe
+// yeni bir değer atıyoruz. değişken değeri değiştirilebilir
+// olması için let veya var keywordu ile tanımlanmış olmalı.
 javascriptIsFun = "YES";
 console.log(javascriptIsFun);
 
 // Sabit tanımlama
 const birthYear = 1991;
-// birthYear = 1992;
+// birthYear = 1992;    // bu hata verir.
 
 // good practice:
 // degerin degiseceginden emin degilsen
 // her zaman const kullan.
 
-// Big no no! yeni değişken tanımlarken let/const kullan.
+// Yeni değişken tanımlarken let/const kullan.
 // böyle tanımlarsan global objenin bir değişkeni olur.
 // Buglara sebebiyet verebilir...
 lastName = "Ozturk";
@@ -68,14 +71,19 @@ console.log(ageNurullah * 2, ageNurullah / 10, 2 ** 3);
 
 // Assignment Operators
 let x = 10 + 5;
+
 // x = x + 10;
 x += 10;
+
 // x = x * 4;
 x *= 4;
+
 // x = x + 1;
 x++;
+
 // x = x - 1;
 x--;
+
 console.log(x);
 
 // Comparison Operators
