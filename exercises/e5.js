@@ -9,3 +9,5 @@
   notlar toplamını not sayısına bölerek ortalama notu 
   bulun ve yazdırın.
 */
+
+const grades = [98, 76, 71, 87, 83, 90, 57, 79, 82, 94];
