@@ -7,25 +7,28 @@
 // such as Arrays, Strings, Maps, NodeLists, and more.
 
 for (const x of ["pzt", "sal", "çar"]) {
-    console.log(x);
+  console.log(x);
 }
 
 const kelime = "merhaba";
 for (const harf of kelime) {
-    console.log(harf);
+  console.log(harf);
 }
 
 let total = 0;
 const dizi = [10, 20, 30, 40, 50];
 for (const number of dizi) {
-    total = total + number;
-    // total += number;
+  total = total + number;
+  // total += number;
 }
 console.log("dizinin ortalaması:", total / dizi.length);
 
-for (let i = 0; i < 10; i++){
-    console.log(i);
+for (let i = 0; i < 10; i++) {
+  console.log(i);
 }
+
+////////////////////////////////////////////////////////
+// Working with Strings - Part 2
 
 const newPlane = "Airbus A320neo";
 console.log(newPlane.startsWith("Airb"));
@@ -58,15 +61,15 @@ console.log(newName);
 // döngüye devam et (sıradaki isim)
 
 const capitalizeName = function (nameStr) {
-    const isimler = nameStr.split(" ");
-    const isimlerDizisi = [];
+  const isimler = nameStr.split(" ");
+  const isimlerDizisi = [];
 
-    for (const isim of isimler) {
-        // isimlerDizisi.push(isim.toLowerCase().replace(isim[0], isim[0].toUpperCase()));
-        isimlerDizisi.push(isim[0].toUpperCase() + isim.toLowerCase().slice(1));
-    }
-    return isimlerDizisi.join(" ");
-}  
+  for (const isim of isimler) {
+    // isimlerDizisi.push(isim.toLowerCase().replace(isim[0], isim[0].toUpperCase()));
+    isimlerDizisi.push(isim[0].toUpperCase() + isim.toLowerCase().slice(1));
+  }
+  return isimlerDizisi.join(" ");
+};
 console.log(capitalizeName("jessica ann smith davis"));
 console.log(capitalizeName("eDremitLi eLekçi eRDİ"));
 console.log(capitalizeName("John doe"));
@@ -89,12 +92,12 @@ console.log(message.padEnd(20, "*"));
 // ve bu stringi return edin.
 
 const maskCreditCard = function (number) {
-    const str = String(number);
-    // const str = number + "";
+  const str = String(number);
+  // const str = number + "";
 
-    const last = str.slice(-4);
-    return last.padStart(str.length, "*");
-}
+  const last = str.slice(-4);
+  return last.padStart(str.length, "*");
+};
 console.log(maskCreditCard(67328826));
 console.log(maskCreditCard(6732882612346589));
 console.log(maskCreditCard("123213214947354321732171142"));

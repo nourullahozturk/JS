@@ -2,6 +2,7 @@
 // DERS 4
 // 7.11.2024
 
+////////////////////////////////////////////////////////
 // Introduction to Arrays
 const fruit1 = "Mango";
 const fruit2 = "Cherry";
@@ -68,8 +69,8 @@ console.log(newFruits.indexOf("Apple"));
 console.log(newFruits.includes("Elma"));
 console.log(newFruits.includes("Apple"));
 
-////////////////////////////////////////////////////////7
-// Working with Strings
+////////////////////////////////////////////////////////
+// Working with Strings - Part 1
 
 const airline = "TAP Air Portugal";
 const plane = "A320";
