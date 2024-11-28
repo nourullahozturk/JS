@@ -39,11 +39,30 @@ const scoreKoalas = (109 + 95 + 50) / 3;
 console.log(scoreDolphins, scoreKoalas);
 
 if (scoreDolphins > scoreKoalas && scoreDolphins >= 100) {
-  console.log('Dolphins win the trophy 🏆');
+  console.log("Dolphins win the trophy 🏆");
 } else if (scoreKoalas > scoreDolphins && scoreKoalas >= 100) {
-  console.log('Koalas win the trophy 🏆');
-} else if (scoreDolphins === scoreKoalas && scoreDolphins >= 100 && scoreKoalas >= 100) {
-  console.log('Both win the trophy!');
+  console.log("Koalas win the trophy 🏆");
+} else if (
+  scoreDolphins === scoreKoalas &&
+  scoreDolphins >= 100 &&
+  scoreKoalas >= 100
+) {
+  console.log("Both win the trophy!");
 } else {
-  console.log('No one wins the trophy 😭');
+  console.log("No one wins the trophy 😭");
 }
+
+/////////////////////////////////////////////////////////////////
+
+// calcAverage isimli bir arrow fonksiyon oluştur. Parametre olarak 3 sayı alsın.
+// return değeri olarak bu 3 sayının ortalamasını döndürsün.
+// Dolfin ve Koala takımlarının skorlarını calcAverage fonksiyonu ile hesapla.
+// checkWinner isimli bir fonksiyon oluştur (function declaration veya function
+// expression kullan). Bu fonksiyon parametre olarak takımların ortalama
+// skorlarını alsın ve şu kurallara göre kazananı belirlesin:
+// Ortalama skoru diğer takımın ortalama skorunun iki katına
+// eşit veya büyük olan takım kazansın.
+// iki takımın skoru da birbirinin iki katına eşit veya büyük değilse hiçbir takım
+// oyunu kazanmasın.
+// TEST DATA 1: Dolphins score 44, 23 and 71. Koalas score 65, 54 and 49
+// TEST DATA 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
