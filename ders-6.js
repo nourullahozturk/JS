@@ -4,6 +4,71 @@
 
 ///////////////////////////////////////
 // Introduction to Objects
+nurullahArray = [
+  "Nurullah",
+  "Öztürk",
+  2024 - 1998,
+  "araştırma görevlisi",
+  ["Fazıl, Ahmet, Ömer"]
+]
+
+const nurullah = {
+  firstName: "Nurullah",
+  lastName: "Öztürk",
+  age: 2024 - 1998,
+  job: "araştırma görevlisi",
+  cousins: ["Fazıl, Ahmet, Ömer"]
+}
+
+// Dot vs. Bracket Notation
+console.log(nurullah);
+
+console.log(nurullah.lastName);
+console.log(nurullah["lastName"]);
+
+const nameKey = "Name";
+console.log(nurullah["first" + nameKey]);
+console.log(nurullah["last" + nameKey]);
+// console.log(nurullah.("last" + nameKey)); // hata
+
+// Adding new property
+nurullah.location = "İstanbul";
+nurullah["github"] = "nourullahozturk";
+console.log(nurullah);
+
+// Object Methods
+const fazil = {
+  firstName: "Fazıl",
+  lastName: "Şengül",
+  birthYear: 1996,
+  job: "jewelery clerk",
+  cousins: ["Nurullah, Ahmet, Abdussamed"],
+  hasDriversLicense: true,
+
+  // calcAge: function () {
+  //   return 2024 - this.birthYear;
+  // } 
+
+  calcAge: function () {
+    this.age = 2024 - this.birthYear;
+    return this.age;
+  },
+
+  // Exercise
+  // "Fazıl is a 28-year old jewelery clerk, and he has a driver's license"
+  getSummary: function () {
+    return `${fazil.firstName} is a ${fazil.calcAge()}-year old
+    ${fazil.job}, and he has
+    ${fazil.hasDriversLicense ? "a" : "no"} driver's license`
+  }
+
+}
+console.log(fazil.calcAge());
+console.log(fazil.age);
+console.log(fazil.age);
+console.log(fazil.age);
+
+console.log(fazil.getSummary());
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -19,6 +84,29 @@ TEST DATA: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.9
 
 GOOD LUCK 😀
 */
+
+const mark = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.bmi = this.mass / height ** 2;
+    return this.bmi;
+  }
+}
+
+const john = {
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.bmi = this.mass / height ** 2;
+    return this.bmi;
+  }
+}
+mark.calcBMI();
+john.calcBMI();
+console.log(mark.bmi, john.bmi);
 
 ///////////////////////////////////////
 // Iteration: The for Loop
