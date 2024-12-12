@@ -35,50 +35,80 @@ yaşayan hücreler kastedilmektedir.
 Hint: Add a 1-second pause to reduce flickering (use time module)
 */
 
-const WIDTH = 10;
-const HEIGHT = 4;
-// " " veya "#"
-[
-    [" ", "#", " ", " "],
-    [" ", "#", "#", " "],
-    [" ", " ", " ", "#"],
-    [" ", "#", " ", " "],
-]
+const WIDTH = 60;
+const HEIGHT = 20;
 
-const prevCells = [];
-for (let i = 0; i < HEIGHT; i++) {
-    const row = []; 
-    for (let j = 0; j < WIDTH; j++) {
-        row.push(Math.floor(Math.random() * 2) === 0 ? " " : "#")
-    }
-    prevCells.push(row);
+// Matematiğe uygun mod işlemi yapacak fonksiyonumuz
+const modulo = function(dividend, divisor) {
+    const quotient = Math.floor(dividend / divisor);
+    remainder = dividend - divisor * quotient
+    return remainder;
 }
 
-// while (true) { 
-    const currentCells = [];
-    
-    // Copy previous cells
-    for (let i = 0; i < prevCells.length; i++) {
-        currentCells[i] = prevCells[i].slice();
+const sleep = function(ms) {
+    return new Promise((cb) => setTimeout(cb, ms));
+}
+
+
+const nextCells = [];
+for (let x = 0; x < WIDTH; x++) {
+    const row = []; 
+    for (let y = 0; y < HEIGHT; y++) {
+        row.push(Math.floor(Math.random() * 2) === 0 ? " " : "#")
     }
-    console.log(currentCells);
-    // Print current cells
-    for (let i = 0; i < currentCells.length; i++) {
-        for (let j = 0; j < currentCells[i].length; j++) {
-            process.stdout.write(`${currentCells[i][j]} `)
+    nextCells.push(row);
+}
+
+const game = async function () {
+    while (true) { 
+        const currentCells = [];
+        
+        // Copy previous cells
+        for (let i = 0; i < nextCells.length; i++) {
+            currentCells[i] = nextCells[i].slice();
         }
-        console.log();
-    }
 
-    // Calculate the next step's cells based on the current cells
-    for (let i = 0; i < HEIGHT; i++){
-        for (let j = 0; j < WIDTH; j++) {
-            numNeighbours = 0;
-            if (currentCells[i-1][j-1] === "#") numNeighbours++;
-            if (currentCells[i-1][j] === "#") numNeighbours++;
-            
+        // Print current cells
+        console.clear();
+        for (let y = 0; y < HEIGHT; y++) {
+            for (let x = 0; x < WIDTH; x++) {
+                process.stdout.write(`${currentCells[x][y]} `)
+            }
+            console.log();
         }
+
+        // Calculate the next step's cells based on the current cells
+        for (let x = 0; x < WIDTH; x++){
+            for (let y = 0; y < HEIGHT; y++) {
+                // WIDTH = 10 => [0, 9] arasında olmalı
+                leftCoord = modulo(x - 1, WIDTH); 
+                rightCoord = modulo(x + 1, WIDTH);
+                aboveCoord = modulo(y - 1, HEIGHT);
+                belowCoord = modulo(y + 1, HEIGHT);
+
+                let numNeighbours = 0;
+                // currentCells[-1][-1] // hata
+                if (currentCells[leftCoord][aboveCoord] === "#") numNeighbours++;
+                if (currentCells[x][aboveCoord] === "#") numNeighbours++;
+                if (currentCells[rightCoord][aboveCoord] === "#") numNeighbours++;
+                if (currentCells[leftCoord][y] === "#") numNeighbours++;
+                if (currentCells[rightCoord][y] === "#") numNeighbours++;
+                if (currentCells[leftCoord][belowCoord] === "#") numNeighbours++;
+                if (currentCells[x][belowCoord] === "#") numNeighbours++;
+                if (currentCells[rightCoord][belowCoord] === "#") numNeighbours++;
+
+                if(currentCells[x][y] === "#" && (numNeighbours === 2 || numNeighbours === 3)) {
+                    nextCells[x][y] = "#";
+                }
+                else if(currentCells[x][y] === " " && numNeighbours === 3){
+                    nextCells[x][y] = "#";
+                } else {
+                    nextCells[x][y] = " ";
+                }
+            }
+        }
+        await sleep(500);
     }
+}
 
-// }
-
+game();
